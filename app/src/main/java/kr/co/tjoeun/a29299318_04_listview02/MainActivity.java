@@ -55,8 +55,13 @@ public class MainActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 //        꾹 누르고 있으면, 해당 방의 설명을 Toast로 출력.
-                Room data = roomDatas.get(position);
-                Toast.makeText(mContext, data.getDescription(), Toast.LENGTH_SHORT).show();
+//                Room data = roomDatas.get(position);
+//                Toast.makeText(mContext, data.getDescription(), Toast.LENGTH_SHORT).show();
+
+//                꾹 누르면, 해당 아이템을 목록에서 삭제.
+                roomDatas.remove(position);
+//                어댑터에게 새로고침 시킴.
+                roomAdapter.notifyDataSetChanged();
 
 
                 return false; //        true: 롱클릭만. false 그냥 클릭도 같이.
