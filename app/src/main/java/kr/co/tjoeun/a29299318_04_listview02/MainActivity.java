@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity {
                 Toast.makeText(mContext, data.getDescription(), Toast.LENGTH_SHORT).show();
 
 
-                return false;//        true: 롱클릭만. false 그냥 클릭도 같이.
+                return false; //        true: 롱클릭만. false 그냥 클릭도 같이.
             }
         });
 
