@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +36,30 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         if (row == null) {
             row = inf.inflate(R.layout.room_list_item,null);
         }
+
+        Room data = mList.get(position);
+        TextView priceTxt = row.findViewById(R.id.priceTxt);
+        TextView addressAndFloorTxt = row.findViewById(R.id.addressAndFloorTxt);
+        TextView descText = row.findViewById(R.id.descText);
+
+//        가격 설정 => setText에는 int값 넣지 말자.
+//        1만 이상 ? 억 단위, 아니면? 숫자만, 찍어서.
+
+        if(data.getPrice() >= 10000) {
+//          ? 억 ?천으로 가공.
+//            ? 억 ?
+            int uk = data.getPrice() / 10000;
+            int thousand = data.getPrice() % 10000;
+
+            priceTxt.setText(String.format("%d억 %,d",uk,thousand));
+        }
+        else {
+            priceTxt.setText(String.format("%,d",data.getPrice()));
+        }
+
+
+
+
         return row;
     }
 }
